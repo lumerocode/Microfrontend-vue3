@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "vite-plugin-top-level-await": "^1.4.1",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
