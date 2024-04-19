@@ -7,6 +7,7 @@
           class="form-control"
           placeholder="Usuario"
           required
+          autocomplete="username"
         />
       </div>
       <div class="form-group my-2">
@@ -17,6 +18,7 @@
           type="password"
           placeholder="Contraseña"
           required
+          autocomplete="current-password"
         />
       </div>
       <div class="text-danger my-2">{{ userStore.state.error }}</div>
