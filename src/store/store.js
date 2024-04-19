@@ -5,7 +5,7 @@ export const useStore = createStore({
   state() {
     // define tus estados compartidos aquí
     return{    
-      contador: 1,
+      token: "No logueado"
     }
   },
   mutations: {
@@ -16,5 +16,6 @@ export const useStore = createStore({
   },
   getters: {
     // define tus getters aquí
+    getToken: (state) => state.token,
   }
 });
