@@ -34,9 +34,8 @@ export default defineConfig({
       filename: 'Microfrontend-vue3.js',
       // Modules to expose
       exposes: {
-        './Microfrontend-vue3': './src/components/WelcomeItem.vue',
-        './FormTest': './src/components/FormTest.vue',
-        './remoteStore': './src/store/store.js',
+        //'./FormTest': './src/components/FormTest.vue',
+        './remoteStore': './src/store/index.ts',
       },
       shared: {
         vue: {},
