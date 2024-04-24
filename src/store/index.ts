@@ -1,38 +1,21 @@
+import { Store, createStore, useStore as baseUseStore } from 'vuex';
+import AuthenticationModule from './authentication';
+import { type AuthenticationState } from './authentication/state';
 import type { InjectionKey } from 'vue';
-import { createStore, Store } from 'vuex';
-import * as Cookie from 'js-cookie';
 
-// Define el estado y los tipos de la tienda
-interface State {
-  token: string | null;
+
+export interface StateInterface {
+  authentication: AuthenticationState
 }
 
-interface RootState {
-  token: string | null;
-}
+export const key: InjectionKey<Store<StateInterface>> = Symbol()
 
-// Crea una clave de inyección para la tienda
-export const key: InjectionKey<Store<State>> = Symbol();
-
-// Crea y exporta la tienda Vuex
-export const store = createStore<State>({
-  state() {
-    return {
-      token: null
-    };
-  },
-  mutations: {
-    SET_TOKEN(state, token: string) {
-      state.token = token;
-    }
-  },
-  actions: {
-    initSession({ commit }, { token }: { token: string }) {
-      Cookie.default.set('jwt_main', token);
-      commit('SET_TOKEN', token);
-    }
-  },
-  getters: {
-    getToken: (state: State) => state.token
+export default createStore<StateInterface>({
+  modules: {
+    authentication: AuthenticationModule
   }
-});
+})
+
+export function useStore () {
+  return baseUseStore(key)
+}

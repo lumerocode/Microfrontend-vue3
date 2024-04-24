@@ -11,14 +11,13 @@ const APPLICATION_PORT = 5006;
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    assetsInlineLimit: 40960,
-    minify: true,
-    cssCodeSplit: false,
-    sourcemap: true,
+    target: 'esnext',
+    minify: false,
+    cssCodeSplit: true,
     rollupOptions: {
-      output: {
-          minifyInternalExports: false
-      }
+        output: {
+            minifyInternalExports: false
+        }
     }
   },
   server: {
@@ -34,8 +33,9 @@ export default defineConfig({
       filename: 'Microfrontend-vue3.js',
       // Modules to expose
       exposes: {
-        //'./FormTest': './src/components/FormTest.vue',
+        './Login': './src/components/Login.vue',
         './remoteStore': './src/store/index.ts',
+        './useAuthentication': './src/composables/useAuthentication.ts'
       },
       shared: {
         vue: {},
