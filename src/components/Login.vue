@@ -36,7 +36,7 @@ export default {
           },
         })
         const token = response.data.access_token
-        emit('loginSuccess', token);    
+        emit('loginSuccess', token);            
       } catch (error) {
         console.log(error)
       }
