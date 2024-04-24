@@ -34,8 +34,6 @@ export default defineConfig({
       // Modules to expose
       exposes: {
         './Login': './src/components/Login.vue',
-        './remoteStore': './src/store/index.ts',
-        './useAuthentication': './src/composables/useAuthentication.ts'
       },
       shared: {
         vue: {},

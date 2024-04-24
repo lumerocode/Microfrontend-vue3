@@ -13,15 +13,14 @@
 </template>
 
 <script lang="ts">
-import { ref, type Ref } from 'vue'
+import { ref } from 'vue'
 import axios from 'axios';
-import { useAuthentication } from '@/composables/useAuthentication';
 
 export default {
-  setup () {
+  emits: ['loginSuccess'],
+  setup (props, {emit} ) {
     const email = ref('');
     const password = ref('');
-    const { initSessionMain } = useAuthentication()
 
 // Inicializar ReCaptcha
 
@@ -37,7 +36,7 @@ export default {
           },
         })
         const token = response.data.access_token
-        initSessionMain(token)       
+        emit('loginSuccess', token);    
       } catch (error) {
         console.log(error)
       }
